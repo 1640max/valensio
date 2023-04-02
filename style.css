@@ -124,7 +124,6 @@
   --background-2-cross-opacity: .15;
 }
 
-/* TODO: Автоматическое включение в случае prefers...dark делать через js */
 .color-theme_name_dark {
   --background: #151515;
   --background-2: #002843;
@@ -238,10 +237,8 @@ a {
   border: 0.07rem solid;
   border-radius: 9999px;
   padding: 0.05rem 0.7rem 0.15rem;
-  width: -webkit-min-content;
   width: -moz-min-content;
   width: min-content;
-  height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
   white-space: nowrap;
@@ -595,7 +592,6 @@ a {
 
 .event-header__button {
   grid-area: button;
-  position: -webkit-sticky;
   position: sticky;
   bottom: 1rem;
 }
@@ -670,15 +666,12 @@ a {
   grid-auto-flow: column;
   /* Если убрать это, то галерея будет уже промотана на середину (не помогает) */
   align-self: start;
-  cursor: -webkit-grab;
   cursor: grab;
-  -ms-scroll-snap-type: x mandatory;
-      scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory;
 }
 @media (pointer: fine) {
   .gallery {
-    -ms-scroll-snap-type: unset;
-        scroll-snap-type: unset;
+    scroll-snap-type: unset;
   }
 }
 
@@ -755,15 +748,12 @@ a {
   align-items: start;
   justify-content: start;
   overflow: auto;
-  cursor: -webkit-grab;
   cursor: grab;
-  -ms-scroll-snap-type: x mandatory;
-      scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory;
 }
 @media (pointer: fine) {
   .reviews {
-    -ms-scroll-snap-type: unset;
-        scroll-snap-type: unset;
+    scroll-snap-type: unset;
   }
 }
 

@@ -136,7 +136,6 @@
 }
 
 // Должна быть последняя, чтобы у неё был выше приоритет
-/* TODO: Автоматическое включение в случае prefers...dark делать через js */
 .color-theme_name_dark {
   --background: #151515;
   @include define-color(--background-2, #002843);
