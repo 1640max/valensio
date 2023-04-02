@@ -1,0 +1,31 @@
+.gallery {
+  display: grid;
+  grid-auto-flow: column;
+  // grid-auto-columns: unquote("min(80vw, 25rem)");
+
+  /* Если убрать это, то галерея будет уже промотана на середину (не помогает) */
+  align-self: start;
+
+  cursor: grab;
+  scroll-snap-type: x mandatory;
+
+  @media (pointer: fine) {
+    scroll-snap-type: unset;
+  }
+}
+
+.gallery__photo {
+  border-radius: var(--border-radius);
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  // width: 100%;
+
+  /* TODO: С помощью JS растянуть фотку, если её реальный размер меньше срендеренного
+     Вот эта строка работает, но тогда из-за max-height фотки исказятся*/
+  // min-width: min(80vw, 25rem);
+
+  /* Уменьшаем, если больше срендеренного (чаще всего это так) */
+  max-width: min(80vw, 25rem);
+
+  max-height: 80vh;
+}

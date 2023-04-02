@@ -1,0 +1,15 @@
+<header class="event-header container">
+  <div class="event-header__info">
+    <div class="event-header__title">
+      <div class="event-header__type">[[+type]]</div>
+      <h1 class="h2 event-header__name">
+        [[+name]] <span class="emoji">[[+emoji]]</span>
+      </h1>
+    </div>
+    <div class="event-header__tags tag-series">
+      [[!tags-gen? &class=`event-header__tag` &tags=`[[+tags]];[[+running-time]];[[+age]]+`]]
+    </div>
+  </div>
+  <img class="event-header__img" src="[[+cover]]">
+  <a class="event-header__button button" href="/[[+alias]]#tickets">[[+action]]</a>
+</header>

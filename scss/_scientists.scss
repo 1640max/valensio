@@ -1,0 +1,45 @@
+.scientists {
+  display: grid;
+  justify-content: start;
+  align-items: start;
+
+  @media (min-width: $md) {
+    grid-auto-flow: column;
+  }
+}
+
+.scientist {
+  display: grid;
+  grid-template-areas: 
+    "photo name"
+    "text  text";
+  grid-template-columns: auto 1fr;
+  gap: .75rem;
+  align-items: start;
+  
+  border-radius: var(--border-radius);
+  padding: 1.5rem .75rem;
+  @include background-alternate-crosses(--background-2-cross);
+}
+
+.scientist__photo {
+  grid-area: photo;
+  width: 4rem;
+  border-radius: var(--border-radius);
+}
+.scientist__name {
+  grid-area: name;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.scientist__description {
+  display: block;
+  grid-area: description;
+  color: var(--text);
+  line-height: var(--line-height-small);
+}
+
+.scientist__text {
+  grid-area: text;
+}

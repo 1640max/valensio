@@ -1,0 +1,157 @@
+@use "sass:color";
+
+// Миксин define-color создаёт:
+//   — CSS-переменную с названием --name, содержащую указанный цвет в HEX.
+//     Она используется в CSS как обычно.
+//   — CSS-переменную с названием --name-rgb и разложением указанного цвета
+//     по каналам, типа "25 255 128". Она используется для создания
+//     сложного фона с крестом из двух градиентов (миксин make-cross).
+// Дело в том, что на уровне CSS нельзя задать прозрачность цвету,
+// заданному через переменную в HEX. Поэтому цвет нужно разложить на RGB
+// и использовать rgb(r, g, b / opacity). Мне удобнее использовать именно HEX
+// и полностью переходить на rgb не хочу, поэтому использую вот такой «адаптер».
+
+@mixin define-color($name, $color) {
+  #{$name}: #{$color};
+  #{$name}-rgb: #{color.red($color) color.green($color) color.blue($color)};
+}
+
+// Генерирует код для фона: сплошной цвет и на нём два перпендикулярных градиента.
+// «var-» в названии SASS-переменной указывает, что она содержит не значение,
+// а название CSS-переменной.
+// 
+// @param {string} $property-name — Name of CSS variable we are creating
+// @param {string} $var-cross-color-rgb — CSS variable containing gradients color in "r g b" format
+// @param {string} $var-cross-opacity — CSS variable containing opacity of the cross
+// @param {string} $var-stop-horizontal — CSS variable containing stop value for horizontal gradient
+// @param {string} $var-stop-vertical — Same but vertical
+// @param {string} $var-background-color — CSS variable containing background solid color
+// @param {string} $default-or-inverse — If "inverse" then gradient intersect on top left. Else on bottom right.
+
+@mixin make-cross($property-name, $var-cross-color-rgb, $var-cross-opacity,
+                  $var-stop-horizontal, $var-stop-vertical, $var-background-color,
+                  $default-or-inverse: 'default') {
+
+  $stop-horizontal: #{var($var-stop-horizontal)};
+  $stop-vertical: #{var($var-stop-vertical)};
+
+  @if $default-or-inverse == 'inverse' {
+    $stop-horizontal: #{calc(100% - var($var-stop-horizontal))};
+    $stop-vertical: #{calc(100% - var($var-stop-vertical))};
+  }
+
+  #{$property-name}:
+    linear-gradient(
+      to bottom,
+      rgb(var(#{$var-cross-color-rgb}) / 0                         ) 0,
+      rgb(var(#{$var-cross-color-rgb}) / var(#{$var-cross-opacity})) #{$stop-horizontal},
+      rgb(var(#{$var-cross-color-rgb}) / 0                         ) 100%
+    ),
+    linear-gradient(
+      to right,
+      rgb(var(#{$var-cross-color-rgb}) / 0                         ) 0,
+      rgb(var(#{$var-cross-color-rgb}) / var(#{$var-cross-opacity})) #{$stop-vertical},
+      rgb(var(#{$var-cross-color-rgb}) / 0                         ) 100%
+    ),
+    var(#{$var-background-color});
+}
+
+
+
+.color-theme {
+  /* Дефолтная цветовая тема */
+  --background: #fff;
+  @include define-color(--background-2, #fbc);
+  @include define-color(--accent, #020881);
+  --text-accent: #fff;
+  --text: #000;
+  --accent-cross-opacity: .15;
+  --background-2-cross-opacity: .1;
+
+  /* Положение градиента по умолчанию */
+  --stop-default: 70%;
+  /* Переменные, позволяющие двигать каждый из двух градиентов креста отдельно.
+     Присваиваем им значение по умолчанию, а потом будем менять через js. */
+  --stop-horizontal-dynamic: var(--stop-default);
+  --stop-vertical-dynamic: var(--stop-default);
+  
+  @include make-cross(--accent-cross, --background-2-rgb, --accent-cross-opacity,
+                      --stop-horizontal-dynamic, --stop-vertical-dynamic, --accent);
+  @include make-cross(--accent-cross-inverse, --background-2-rgb, --accent-cross-opacity,
+                      --stop-horizontal-dynamic, --stop-vertical-dynamic, --accent, inverse);
+  @include make-cross(--background-2-cross, --accent-rgb, --background-2-cross-opacity,
+                      --stop-horizontal-dynamic, --stop-vertical-dynamic, --background-2);
+  @include make-cross(--background-2-cross-inverse, --accent-rgb, --background-2-cross-opacity,
+                      --stop-horizontal-dynamic, --stop-vertical-dynamic, --background-2, inverse);
+}
+
+.color-theme_name_green {
+  --background: #2c6214;
+  @include define-color(--background-2, #377b19);
+  @include define-color(--accent, #e4ff00);
+  --text-accent: #003e4d;
+  --text: #ffc;
+  --accent-cross-opacity: .25;
+  --background-2-cross-opacity: .2;
+}
+
+.color-theme_name_red {
+  --background: #b62f2f;
+  @include define-color(--background-2, #ce4141);
+  @include define-color(--accent, #fbff60);
+  --text-accent: #110046;
+  --text: #ffc;
+  --accent-cross-opacity: .2;
+  --background-2-cross-opacity: .2;
+}
+
+.color-theme_name_brown {
+  --background: #6c4100;
+  @include define-color(--background-2, #7a5112);
+  @include define-color(--accent, #ffe900);
+  --text-accent: #000;
+  --text: #fff;
+  --accent-cross-opacity: .25;
+  --background-2-cross-opacity: .2;
+}
+
+.color-theme_name_police {
+  --background: #1b1387;
+  @include define-color(--background-2, #291fc7);
+  @include define-color(--accent, #df1313);
+  --text-accent: #fff;
+  --text: #fff;
+  --accent-cross-opacity: .15;
+  --background-2-cross-opacity: .3;
+}
+
+.color-theme_name_blue {
+  --background: #2b1387;
+  @include define-color(--background-2, #291fc7);
+  @include define-color(--accent, #ffd100);
+  --text-accent: #000;
+  --text: #fff;
+  --accent-cross-opacity: .2;
+  --background-2-cross-opacity: .15;
+}
+
+// Должна быть последняя, чтобы у неё был выше приоритет
+/* TODO: Автоматическое включение в случае prefers...dark делать через js */
+.color-theme_name_dark {
+  --background: #151515;
+  @include define-color(--background-2, #002843);
+  @include define-color(--accent, #f85);
+  --text-accent: #000;
+  --text: #fff;
+  --accent-cross-opacity: .15;
+  --background-2-cross-opacity: .15;
+}
+
+// Миксины для использования вне этого файла
+
+@mixin background-alternate-crosses($var-cross, $even-or-odd: even) {
+  background: var(#{$var-cross});
+  &:nth-child(#{$even-or-odd}) {
+    background: var(#{$var-cross}-inverse);
+  }
+}

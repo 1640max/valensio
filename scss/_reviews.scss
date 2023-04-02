@@ -1,0 +1,40 @@
+.reviews-wrapper {
+  display: grid;
+  justify-items: start;
+  overflow-x: auto;
+}
+
+.reviews {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: unquote("min(80vw, 20rem)");
+  grid-auto-columns: unquote("min(90vw, 20rem)");
+  align-items: start;
+  justify-content: start; // Иногда отзывы отображаются уже прокрученные
+
+  overflow: auto;
+  cursor: grab;
+  scroll-snap-type: x mandatory;
+
+  @media (pointer: fine) {
+    scroll-snap-type: unset;
+  }
+}
+
+.review-card {
+  display: grid;
+  gap: .75rem;
+  
+  padding: 1.5rem .75rem;
+  line-height: var(--line-height-small);
+  border-radius: var(--border-radius);
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+
+  @include background-alternate-crosses(--background-2-cross);
+}
+
+.review-card__author {
+  font-weight: 700;
+  color: var(--accent);
+}

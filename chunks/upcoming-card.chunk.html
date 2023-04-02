@@ -1,0 +1,18 @@
+<div class="upcoming-card">
+  <img class="upcoming-card__cover" src="[[+cover]]" alt="[[+name]]" onclick="location.href='[[+link]]'">
+  <div class="upcoming-card__info">
+    <h2 class="upcoming-card__name">
+      <a href="[[+link]]" style="text-decoration: none">[[+name]]&nbsp;<span class="emoji">[[+emoji]]</span></a>
+    </h2>
+    <p class="upcoming-card__description paragraph">[[+description]]</p>
+    <div class="upcoming-card__tags">
+      <div class="upcoming-card__dates tag-series">
+        [[+tags-workaround]]
+      </div>
+      <div class="tag">[[+age]]+</div>
+    </div>
+  </div>
+  <!-- TODO: сделать, чтобы зависело от поля type -->
+  <!-- TODO: переименовать везде в #tickets -->
+  <a class="upcoming-card__button button" href="[[+link]]#tickets">[[+action]]</a>
+</div>

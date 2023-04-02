@@ -1,0 +1,12 @@
+<div class="repertoire-card">
+  <a class="repertoire-card__cover-wrapper" [[+hrefed-link]]>
+    <img class="repertoire-card__cover" src="[[+cover]]" alt="[[+name]]" style="width: 100%">
+  </a>
+  <h3 class="h3 repertoire-card__name">
+    <a [[+hrefed-link]] style="text-decoration: none">[[+name]]&nbsp;<span class="emoji">[[+emoji]]</span></a>
+  </h3>
+  <p class="repertoire-card__description paragraph">[[+description]]</p>
+  <div class="repertoire-card__tags tag-series">
+    [[!tags-gen? &tags=`[[+tags]];[[+age]]+`]]
+  </div>
+</div>

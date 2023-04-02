@@ -1,0 +1,38 @@
+.cast-member-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 15rem);
+}
+
+.cast-member-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  text-decoration: none;
+}
+
+// Используем обёртку, чтобы загнать вертикальный портрет в квадрат
+// https://stackoverflow.com/a/55966300/9282831
+.cast-member-card__img-wrapper {
+  position: relative;
+  max-width: 15rem;
+
+  &::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+}
+
+.cast-member-card__img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+
+  border-radius: var(--border-radius);
+}
+
+.cast-member-card__name {
+  // Чутка компенсируем отступ сверху от текста
+  margin-top: -0.3rem;
+}

@@ -1,0 +1,46 @@
+.main-menu {
+  display: flex;
+  max-width: unset;
+}
+
+.main-menu__item {
+  @include background-alternate-crosses(--background-2-cross);
+  color: var(--text);
+  white-space: nowrap;
+  padding: 0.3rem 1.5rem 0.45rem;
+  border-radius: var(--border-radius);
+  border: 0;
+  text-decoration: none;
+
+  /* https://stackoverflow.com/questions/21003535/anyway-to-prevent-the-blue-highlighting-of-elements-in-chrome-when-clicking-quic */
+  -webkit-tap-highlight-color: transparent;
+
+  /* Компенсируем невидимый padding */
+  /* &:first-child {
+    margin-left: -.5rem;
+  } */
+
+  /* Переход onmouseout */
+  transition: background-color .6s, color .2s;
+  @mixin active-on-mobile--hover-on-desktop {
+    /* Переход onmousein */
+    transition: background-color .3s, color .2s;
+    
+    color: var(--text-accent);
+    @include background-alternate-crosses(--accent-cross);
+  }
+
+  &:active {
+    @include active-on-mobile--hover-on-desktop();
+  }
+
+  @media (pointer: fine) {
+    &:hover {
+      @include active-on-mobile--hover-on-desktop();
+    }
+  }
+}
+
+.main-menu__item_short {
+  padding-inline: .6rem;
+}

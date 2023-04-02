@@ -1,0 +1,155 @@
+.footer {
+  --footer__module_height_big: 6rem;
+  --footer__module_height_small: 3rem;
+
+  display: grid;
+  grid-template-rows: repeat(11, var(--footer__module_height_small));
+  grid-template-areas: 
+    "soc"
+    "soc"
+    "links"
+    "links"
+    "links"
+    "links"
+    "theatre"
+    "theatre"
+    "contacts"
+    "contacts"
+    "credits";
+
+  @media (min-width: $md) {
+    grid-template-rows: repeat(3, var(--footer__module_height_big));
+    grid-template-areas:
+      "theatre   links"
+      "soc       links"
+      "contacts  credits";
+  }
+
+  @media (min-width: $lg) {
+    grid-template-rows: repeat(5, var(--footer__module_height_small));
+    grid-template-areas:
+      "theatre  theatre   links"
+      "theatre  theatre   links"
+      "soc      contacts  links"
+      "soc      contacts  links"
+      "credits  credits   credits";
+  }
+}
+
+.footer__module {
+  display: flex;
+  align-items: center;
+  color: var(--text-accent);
+  border-radius: var(--border-radius);
+}
+
+
+.footer__soc {
+  grid-area: soc;
+  display: flex;
+  justify-content: space-evenly;
+  background: var(--accent-cross);
+  padding: .75rem 10%;
+  align-items: stretch;
+}
+
+.footer__soc-img {
+  flex: 1 1;
+  background: var(--text-accent);
+  padding: .5rem;
+}
+
+.vk-icon {
+  mask: url(media/soc/vk.svg) center/contain no-repeat content-box;
+}
+.inst-icon {
+  mask: url(media/soc/inst.svg) center/contain no-repeat content-box;
+}
+.tg-icon {
+  mask: url(media/soc/tg.svg) center/contain no-repeat content-box;
+}
+
+.footer__links {
+  grid-area: links;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__link {
+  flex-grow: 1;
+  padding: 0 1rem;
+  @include background-alternate-crosses(--accent-cross, odd);
+
+  position: relative;
+  
+  &:after {
+    content: "→";
+    font-weight: 700;
+    position: absolute;
+    margin-bottom: 0.25rem; // выравниваем стрелочку по вертикали 
+    right: 1rem;
+  }
+}
+
+.footer__theatre {
+  grid-area: theatre;
+  display: flex;
+}
+
+.footer__logo-container {
+  padding: .75rem;
+  background: var(--accent-cross-inverse);
+}
+
+.footer__logo-img {
+  /* Пришлось задать размеры жёстче, чем «height: 100%».
+     Иначе в Firefox какие-то глюки. */
+  height: calc(var(--footer__module_height_big)/1.5);
+}
+
+.footer__name {
+  max-width: unset;
+  justify-content: flex-start;
+  flex-grow: 1;
+  background: var(--accent-cross);
+  padding-left: 1.5rem;
+}
+
+.footer__photo {
+  display: none;
+  background: var(--accent-cross-inverse);
+  padding: 1rem 1.5rem;
+
+  @media (min-width: $lg) {
+    display: block;
+  }
+}
+
+.footer__photo-img {
+  border-radius: var(--border-radius-tiny);
+
+  /* Пришлось задать размеры жёстче, чем «height: 100%».
+    Иначе в Firefox какие-то глюки. */
+  height: calc(var(--footer__module_height_big)/1.5);
+}
+
+.footer__contacts {
+  grid-area: contacts;
+  justify-content: center;
+  line-height: var(--line-height-small);
+  background: var(--accent-cross-inverse);
+}
+
+
+.footer__credits {
+  grid-area: credits;
+  background: var(--accent-cross);
+  justify-content: center;
+
+  height: var(--footer__module_height_small);
+  
+  // only md
+  @media (min-width: $md) and (max-width: calc($lg - 1px)) {
+    height: var(--footer__module_height_big);
+  }
+}

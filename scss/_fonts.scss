@@ -1,0 +1,18 @@
+@mixin font-face-tpl($name, /* $name-no-space,  */$style, $weight, $display, $filename) {
+  @font-face {
+    font-family: $name;
+    font-style: $style;
+    font-weight: $weight;
+    font-display: $display;
+    src:
+      url('../assets/fonts/' + $filename + '.woff2') format('woff2'),
+      url('../assets/fonts/' + $filename + '.woff') format('woff'),
+  }
+}
+
+@include font-face-tpl('Dela Gothic One', normal, 700, swap, "dela-gothic-one-v10-latin_cyrillic-regular");
+@include font-face-tpl('PT Sans', normal, 400, swap, "pt-sans-v17-latin_cyrillic-regular");
+@include font-face-tpl('PT Sans', normal, 700, swap, "pt-sans-v17-latin_cyrillic-700");
+@include font-face-tpl('PT Sans Narrow', normal, 400, swap, "pt-sans-narrow-v17-latin_cyrillic-regular");
+@include font-face-tpl('PT Sans Narrow', normal, 700, swap, "pt-sans-narrow-v17-latin_cyrillic-700");
+@include font-face-tpl('Noto Emoji', normal, 400, block, "noto-emoji-v34-emoji-regular");

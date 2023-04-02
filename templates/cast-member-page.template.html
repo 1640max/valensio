@@ -1,0 +1,39 @@
+<!doctype html>
+<html class="html color-theme color-theme_name_[[*color-theme_name]]" lang="ru-RU">
+  <head>
+    [[$head]]
+  </head>
+  <body class="body">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P2XN9J6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    [[$main-menu]]
+    
+
+
+    <div class="gaps-2 cast-member-page">
+      <div class="gaps-3 container cast-member-page__upper-grid">
+        <h1 class="h1 cast-member-page__name">[[*pagetitle]]</h1>
+        <img class="cast-member-page__cover" src="media/cast/[[*alias]]/cover.jpg" alt="[[$pagetitle]]">
+        <div class="gaps-4 cast-member-page__bio">
+          [[*content]]
+        </div>
+      </div>
+      <div class="gallery drag-to-scroll cast-member-page__gallery">
+        <img class="gallery__photo" src="media/cast/[[*alias]]/1.jpg" alt="[[$pagetitle]]">
+        <img class="gallery__photo" src="media/cast/[[*alias]]/2.jpg" alt="[[$pagetitle]]">
+        <img class="gallery__photo" src="media/cast/[[*alias]]/3.jpg" alt="[[$pagetitle]]">
+      </div>
+      <!-- TODO: Добавить роли и пр. -->
+      <div class="container">
+        [[$creators__card? &position=`Фото` &names=`<a href="https://instagram.com/catherine_kali">Catherine Kali</a>`]]
+        [[$creators__card? &position=`Грим` &names=`<a href="https://vk.com/id2939097">Елена Троянская</a>`]]
+      </div>
+    </div>
+    
+
+
+    [[$footer]]
+  </body>
+</html>

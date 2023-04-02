@@ -1,0 +1,85 @@
+.about__founder-img {
+  width: 1.5em;
+  border-radius: var(--border-radius);
+  margin-bottom: -.4em;
+}
+
+/*  Начиная с md блок с ошибками кидаем вправо и позиционируем его абсолютно,
+    чтобы он не создавал большой отступ снизу от .alehandro.
+    До md имя и ошибки ведут себя, как несвязанные друг с другом блоки,
+    поэтому display: contents */
+.alehandro {
+  display: contents;
+
+  @media (min-width: $md) {
+    display: block;
+    position: relative;
+    max-width: 50rem;
+  }
+}
+
+.alehandro__mistakes {
+  @media (min-width: $md) {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.alehandro__li {
+  text-decoration: line-through 0.05em;
+}
+
+.about-block {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "img"
+    "text";
+  gap: 1rem 2rem;
+
+  /*  Добавляем отступ сверху, чтобы визуально все отступы
+      на странице казались одинаковыми */
+  margin-top: 1rem;
+  
+  @media (min-width: $sm) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "img    ."
+      "header header"
+      "text   text";
+  }
+
+  @media (min-width: $md) {
+    grid-template-columns: 2fr 3fr;
+    grid-template-areas:
+    "header header"
+    "img    text";
+  }
+  
+  @media (min-width: $lg) {
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+      "img header"
+      "img text";
+  }
+}
+
+.about-block__header {
+  grid-area: header;
+  max-width: 40rem;
+}
+
+.about-block__img {
+  grid-area: img;
+  width: 100%;
+  border-radius: var(--border-radius);
+}
+
+.about-block__text {
+  grid-area: text;
+}
+
+
+

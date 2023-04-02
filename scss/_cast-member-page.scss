@@ -1,0 +1,40 @@
+.cast-member-page__upper-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-areas:
+    "name"
+    "cover"
+    "bio";
+
+  @media (min-width: $lg) {
+    column-gap: 3rem;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+    "cover name"
+    "cover bio";
+  }
+}
+
+.cast-member-page__name {
+  grid-area: name;
+}
+
+.cast-member-page__cover {
+  grid-area: cover;
+  width: 100%;
+  max-width: 25rem;
+  border-radius: var(--border-radius);
+
+  @media (min-width: $lg) {
+    max-height: 90vh;
+  }
+}
+
+.cast-member-page__bio {
+  grid-area: bio;
+
+  @media (min-width: $lg) {
+    // margin-top: 1.5rem;
+  }
+}

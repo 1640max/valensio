@@ -1,0 +1,122 @@
+.event-header {
+  display: grid;
+  grid-template-areas:
+    "info"
+    "img"
+    "button";
+
+  @media (min-width: $lg) {
+    grid-template-areas:
+      "info   img"
+      "button img";
+
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: 1fr auto;
+  }
+}
+
+.event-header__info {
+  grid-area: info;
+
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  
+  background: var(--background-2-cross);
+  border-radius: var(--border-radius);
+  padding: 1.5rem .75rem;
+  
+  @media (min-width: $lg) {
+    padding: 2rem 3rem;
+  }
+}
+
+.event-header__type {
+  font-weight: 700;
+}
+
+.event-header__name {
+  color: var(--accent);
+}
+
+.event-header__tag {
+  border-color: var(--accent);
+}
+
+.event-header__img {
+  grid-area: img;
+  border-radius: var(--border-radius);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.event-header__button {
+  grid-area: button;
+
+  position: sticky;
+  bottom: 1rem;
+
+  @media (min-width: $lg) {
+    position: static;
+  }
+}
+
+
+
+.ticket-cards {
+  display: grid;
+
+  @media (min-width: $sm) {
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  }
+}
+
+.ticket-card {
+  display: grid;
+  gap: .75rem;
+  border-radius: var(--border-radius);
+  padding: 1rem .75rem;
+  @include background-alternate-crosses(--background-2-cross);
+}
+
+.ticket-card__date {
+  color: var(--text);
+}
+
+.ticket-card__address {
+  line-height: var(--line-height-small);
+}
+
+
+
+.creators {
+  display: grid;
+}
+
+.creators__card {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 2rem;
+  align-items: center;
+  
+  line-height: var(--line-height-small);
+  border-radius: var(--border-radius);
+  padding: 1rem .75rem;
+  @include background-alternate-crosses(--background-2-cross);
+}
+
+.creators__position {
+  @include reset-my;
+  font-weight: 700;
+}
+
+.creators__names {
+  @include reset-my;
+  text-align: right;
+  justify-self: end;
+  max-width: 28rem;
+}
+

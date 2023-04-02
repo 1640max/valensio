@@ -1,0 +1,170 @@
+// Брейкпоинты
+  $sm: 576px;
+  $md: 768px;
+  $lg: 992px;
+  $xl: 1200px;
+ $xxl: 1400px;
+$xxxl: 1920px;
+
+:root {
+  --border-radius: 1rem;
+  --border-radius-tiny: .25rem;
+  --line-height-small: 116%;
+}
+
+.html {
+  background: var(--background);
+
+  font: 400 16px/140% "PT Sans", sans-serif;
+  color: var(--text);
+
+  @media (min-width: $xxl) {
+    font-size: 24px;
+  }
+  
+  @media (min-width: $xxxl) {
+    font-size: 32px;
+  }
+}
+
+.body {
+  margin: 0;
+}
+
+// "my" значит margin по оси Y, как в бутстрапе
+@mixin reset-my {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.ul {
+  @include reset-my;
+}
+
+@mixin h1 {
+  @include reset-my;
+  
+  /* Кегль меняется по собственной схеме, не как у h2 и h3.
+     Поэтому значения заданы в px, а не в rem.*/
+  font: 700 32px/115% 'Dela Gothic One', sans-serif;
+  color: var(--accent);
+  
+  @media (min-width: $lg) {
+    font-size: 48px
+  }
+  
+  @media (min-width: $xxl) {
+    font-size: 64px
+  }
+  
+  @media (min-width: $xxxl) {
+    font-size: 72px
+  }
+}
+
+/* TODO: Все стили перевести в миксины */
+.h1 {
+  @include h1;
+}
+
+.h2 {
+  @include reset-my;
+  font: 700 1.3rem/120% 'Dela Gothic One', sans-serif; // Было 1.5rem
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.h3 {
+  @include reset-my;
+  font: 700 1.25rem/115% 'Dela Gothic One', sans-serif;
+  color: var(--accent);
+  max-width: 28rem;
+}
+
+.paragraph {
+  @include reset-my;
+  max-width: 30rem;
+}
+
+.container {
+  width: calc(90% + 5px);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Чтобы браузер не окрашивал посещённые ссылки */
+a {
+  color: inherit;
+}
+
+.tag-series {
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  gap: .5rem .4rem;
+}
+
+.tag {
+  font-family: "PT Sans Narrow", sans-serif;
+  border: .07rem solid;
+  border-radius: 9999px;
+  padding: 0.05rem 0.7rem 0.15rem;
+  width: min-content;
+  height: min-content;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.button {
+  @extend .h3;
+  border: 0;
+  border-radius: var(--border-radius);
+  height: 4rem;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--accent-cross);
+  color: var(--text-accent);
+  max-width: unset;
+}
+
+.emoji {
+  font-family: 'Noto Emoji';
+  font-weight: 400;
+  color: var(--text);
+}
+
+
+
+.gaps-1 {
+  display: grid;
+  align-items: start;
+  gap: 6rem;
+}
+
+.gaps-2 {
+  @extend .gaps-1;
+  gap: 3rem;
+}
+
+.gaps-3 {
+  @extend .gaps-1;
+  gap: 1.5rem;
+}
+
+.gaps-4 {
+  @extend .gaps-1;
+  gap: .75rem;
+}
+
+
+
+.toggle-theme {
+  font-family: 'Noto Emoji';
+}
+
+.toggle-theme__icon {
+  position: relative;
+  bottom: -.1rem;
+}

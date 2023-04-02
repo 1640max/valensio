@@ -1,0 +1,114 @@
+.upcoming-cards {
+  display: grid;
+  gap: 3rem 1rem;  
+  align-items: stretch;
+
+  @media (min-width: $md) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: $lg) {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+}
+
+.upcoming-card {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "cover"
+    "info"
+    "button";
+
+    
+  @media (min-width: $lg) {
+    grid-template-columns: 3fr 2fr;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+      "name         name"
+      "tags         cover"
+      "description  cover"
+      "button       cover";
+    gap: 1rem 3rem;
+    
+    border-radius: var(--border-radius);
+    padding: 3rem 2rem;
+    @include background-alternate-crosses(--background-2-cross);
+  }
+}
+
+.upcoming-card__cover {
+  grid-area: cover;
+  border-radius: var(--border-radius);
+  width: 100%;
+  cursor: pointer;  
+}
+
+.upcoming-card__info {
+  grid-area: info;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "name"
+    "description"
+    "tags";
+  gap: 1rem;
+  padding: 1.5rem .75rem;
+  border-radius: var(--border-radius);
+  background: var(--background-2-cross);
+
+  @media (min-width: $lg) {
+    display: contents;
+  }
+}
+
+.upcoming-card__name {
+  @extend .h3; // TODO: перевести в миксин и загнать в media-down
+  grid-area: name;
+  color: var(--accent);
+
+  @media (min-width: $lg) {
+    @include h1;
+    margin-bottom: .2em; // Привязываем его к текущему размеру шрифта
+    max-width: unset; // TODO: избавиться после избавления от @extend .h3
+  }
+}
+
+.upcoming-card__description {
+  grid-area: description;
+  max-width: 20rem;
+  line-height: var(--line-height-small);
+}
+
+.upcoming-card__tags {
+  grid-area: tags;
+
+  display: grid;
+  grid-auto-flow: column;
+  align-items: end;
+  justify-content: space-between;
+
+  padding-top: 1rem;
+  border-top: .07rem solid;
+
+  @media (min-width: $lg) {
+    padding-top: 0;
+    border-top: 0;
+    padding-bottom: 1rem;
+    border-bottom: .07rem solid;
+  }
+}
+
+.upcoming-card__dates {
+  flex-direction: column;
+
+  @media (min-width: $lg) {
+    flex-direction: row;
+  }
+}
+
+.upcoming-card__button {
+  grid-area: button;
+}
