@@ -33,8 +33,6 @@ function getColorMode() {
 }
 
 function setColorMode(colorMode) {
-  // Устраняем мои старые хулиганства
-  document.cookie = 'color-mode=' + colorMode + '; max-age=0;';
   document.cookie = 'color-mode=' + colorMode + '; max-age=34560000; path=/';
   
 }
