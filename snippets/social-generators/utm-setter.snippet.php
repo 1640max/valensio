@@ -30,6 +30,6 @@ if ($shorten) {
 }
 
 // Добавляем текст вместо ссылки для инстаграма
-$outputLinks['inst'] = 'см. ссылку в шапке профиля.';
+$outputLinks['inst'] = 'по ссылке в шапке профиля.';
 
 return $outputLinks;
