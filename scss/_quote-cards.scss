@@ -1,4 +1,4 @@
-.scientists {
+.quote-cards {
   display: grid;
   justify-content: start;
   align-items: start;
@@ -8,7 +8,7 @@
   }
 }
 
-.scientist {
+.quote-card {
   display: grid;
   grid-template-areas: 
     "photo name"
@@ -22,24 +22,25 @@
   @include background-alternate-crosses(--background-2-cross);
 }
 
-.scientist__photo {
+.quote-card__photo {
   grid-area: photo;
   width: 4rem;
   border-radius: var(--border-radius);
 }
-.scientist__name {
+.quote-card__name {
   grid-area: name;
   font-weight: 700;
   color: var(--accent);
 }
 
-.scientist__description {
+.quote-card__description {
   display: block;
   grid-area: description;
   color: var(--text);
   line-height: var(--line-height-small);
+  margin: 0;
 }
 
-.scientist__text {
+.quote-card__text {
   grid-area: text;
 }
