@@ -111,6 +111,7 @@
 .creators__position {
   @include reset-my;
   font-weight: 700;
+  align-self: start;
 }
 
 .creators__names {
