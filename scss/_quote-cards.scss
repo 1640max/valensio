@@ -11,7 +11,7 @@
 .quote-card {
   display: grid;
   grid-template-areas: 
-    "photo name"
+    "photo introduction"
     "text  text";
   grid-template-columns: auto 1fr;
   gap: .75rem;
@@ -27,8 +27,12 @@
   width: 4rem;
   border-radius: var(--border-radius);
 }
+
+.quote-card__introduction {
+  grid-area: introduction;
+}
+
 .quote-card__name {
-  grid-area: name;
   font-weight: 700;
   color: var(--accent);
 }
