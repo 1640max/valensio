@@ -40,7 +40,7 @@ foreach ($events as $event) {
   
   // Пишем дату. <b> чисто по приколу
   $formattedDate = strtotime($event['date']);
-  $postTemplate .= '<b>'.date("d ", $formattedDate).$russianMonths[date('n', $formattedDate)].'</b><br>';
+  $postTemplate .= '<b>'.date("d ", $formattedDate).$russianMonths[date('n', $formattedDate)].date(', H:i', $formattedDate).'</b><br>';
   
   // Получаем остальное
   $postTemplate .= $event['emoji'].' «'.$event['name'].'»<br>'.
