@@ -42,6 +42,12 @@ foreach ($events as $event) {
   $formattedDate = strtotime($event['date']);
   $postTemplate .= '<b>'.date("d ", $formattedDate).$russianMonths[date('n', $formattedDate)].date(', H:i', $formattedDate).'</b><br>';
   
+  // В названии мероприятия заменяем кавычки «» на „“.
+  // Потому что название будет уже обрамлено кавычками-ёлочками.
+  $event['name'] = str_replace(array("«", "»"),
+                               array("„", "“"),
+                               $event['name']);
+
   // Получаем остальное
   $postTemplate .= $event['emoji'].' «'.$event['name'].'»<br>'.
                    $event['description'].' '.$event['age'].'+';
