@@ -135,6 +135,16 @@
   --background-2-cross-opacity: .15;
 }
 
+.color-theme_name_purple {
+  --background: #3d00a0;
+  @include define-color(--background-2, #4800bd);
+  @include define-color(--accent, #ffc93d);
+  --text-accent: #000;
+  --text: #fff;
+  --accent-cross-opacity: .2;
+  --background-2-cross-opacity: .2;
+}
+
 // Должна быть последняя, чтобы у неё был выше приоритет
 .color-theme_name_dark {
   --background: #151515;
