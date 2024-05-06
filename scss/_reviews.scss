@@ -26,12 +26,17 @@
   gap: .75rem;
   
   padding: 1.5rem .75rem;
+  margin: 0;
   line-height: var(--line-height-small);
   border-radius: var(--border-radius);
   scroll-snap-align: center;
   scroll-snap-stop: always;
 
   @include background-alternate-crosses(--background-2-cross);
+}
+
+.review-card__text {
+  margin: 0;
 }
 
 .review-card__author {

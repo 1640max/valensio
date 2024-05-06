@@ -30,11 +30,13 @@
 
 .quote-card__introduction {
   grid-area: introduction;
+  font-weight: 700;
 }
 
 .quote-card__name {
-  font-weight: 700;
   color: var(--accent);
+  font-size: inherit;
+  margin: 0;
 }
 
 .quote-card__description {
@@ -47,4 +49,5 @@
 
 .quote-card__text {
   grid-area: text;
+  margin-inline: 0;
 }
