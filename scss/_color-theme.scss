@@ -145,6 +145,16 @@
   --background-2-cross-opacity: .2;
 }
 
+.color-theme_name_light-blue {
+  --background: #0067b0;
+  @include define-color(--background-2, #3292d6);
+  @include define-color(--accent, #fe5);
+  --text-accent: #000;
+  --text: #fff;
+  --accent-cross-opacity: .2;
+  --background-2-cross-opacity: .2;
+}
+
 // Должна быть последняя, чтобы у неё был выше приоритет
 .color-theme_name_dark {
   --background: #151515;
