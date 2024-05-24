@@ -3,12 +3,12 @@
   --footer__module_height_small: 3rem;
 
   display: grid;
-  grid-template-rows: repeat(11, var(--footer__module_height_small));
+  grid-template-rows: repeat(10, var(--footer__module_height_small));
   grid-template-areas: 
     "soc"
     "soc"
     "links"
-    "links"
+    /* "links" */
     "links"
     "links"
     "theatre"
@@ -112,7 +112,7 @@
   justify-content: flex-start;
   flex-grow: 1;
   background: var(--accent-cross);
-  padding-left: 1.5rem;
+  padding-inline: 1.5rem;
 }
 
 .footer__photo {
