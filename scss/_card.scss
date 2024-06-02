@@ -1,0 +1,5 @@
+.card {
+  @include background-alternate-crosses(--background-2-cross);
+  border-radius: var(--border-radius);
+  padding: 1.25rem .75rem;
+}
