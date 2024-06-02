@@ -1,0 +1,50 @@
+.site-header {
+  margin-top: .5rem;
+}
+
+.site-header__logo {
+  height: 2.2rem;
+  position: relative;
+  top: 0.6rem;
+}
+
+.site-header__brand {
+  margin-block: 0 1rem;
+  font: 700 1rem/120% 'Dela Gothic One', sans-serif;
+  text-transform: uppercase;
+  color: var(--text);
+  text-align: center;
+  font-size: inherit;
+}
+
+.site-header__wrapped {
+  margin-left: -0.3rem;
+}
+
+.site-header__not-wrapped {
+  display: none;
+}
+
+@media (min-width: 695px) {
+
+  .site-header__not-wrapped {
+    display: inline;
+    margin-left: -0.1rem;
+  }
+
+  .site-header__wrapped {
+    display: none;
+  }
+
+  .site-header__brand {
+    position: relative;
+    left: -.2rem;
+    margin-bottom: .7 5rem;
+    text-align: left;
+  }
+
+}
+
+.site-header__menu {
+  margin-bottom: 2rem;
+}
