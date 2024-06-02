@@ -156,5 +156,7 @@
   // only md
   @media (min-width: $md) and (max-width: calc($lg - 1px)) {
     height: var(--footer__module_height_big);
+    padding-left: 1rem;
+    justify-content: left;
   }
 }
