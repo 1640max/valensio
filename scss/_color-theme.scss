@@ -96,9 +96,9 @@
 }
 
 .color-theme_name_red {
-  --background: #b62f2f;
-  @include define-color(--background-2, #ce4141);
-  @include define-color(--accent, #fbff60);
+  --background: #931e1e;
+  @include define-color(--background-2, #b33535);
+  @include define-color(--accent, #eff358);
   --text-accent: #110046;
   --text: #ffc;
   --accent-cross-opacity: .2;
