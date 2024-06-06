@@ -10,10 +10,9 @@
     <!-- End Google Tag Manager (noscript) -->
     [[$site-header]]
     
-
-    <div class="gaps-2 cast-member-page">
+    <main class="gaps-2 cast-member-page">
       <div class="gaps-3 container cast-member-page__upper-grid">
-        <h1 class="h1 cast-member-page__name">[[*pagetitle]]</h1>
+        <h2 class="h1 cast-member-page__name">[[*pagetitle]]</h2>
         <img class="cast-member-page__cover" src="media/cast/[[*alias]]/cover.jpg" alt="[[$pagetitle]]">
         <div class="gaps-4 cast-member-page__bio">
           [[*content]]
@@ -25,13 +24,12 @@
         <img class="gallery__photo" src="media/cast/[[*alias]]/3.jpg" alt="[[$pagetitle]]" loading="lazy">
       </div>
       <!-- TODO: Добавить роли и пр. -->
-      <div class="container">
+      <dl class="container">
         [[$creators__card? &position=`Фото` &names=`<a href="https://instagram.com/catherine_kali" target="_blank">Catherine Kali</a>`]]
         [[$creators__card? &position=`Грим` &names=`<a href="https://vk.com/id2939097" target="_blank">Елена Троянская</a>`]]
-      </div>
-    </div>
+      </dl>
+    </main>
     
-
     [[$footer]]
   </body>
 </html>
