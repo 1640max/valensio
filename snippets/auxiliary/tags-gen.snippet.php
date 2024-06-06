@@ -8,6 +8,6 @@ if ($class) {
 }
  
  return 
-     '<div class="tag'.$class.'">'.
-     str_replace(';', '</div><div class="tag'.$class.'">', $tags).
-     '</div>';
+     '<li class="tag'.$class.'">'.
+     str_replace(';', '</li><li class="tag'.$class.'">', $tags).
+     '</li>';
