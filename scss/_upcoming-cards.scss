@@ -68,6 +68,7 @@
   @extend .h3; // TODO: перевести в миксин и загнать в media-down
   grid-area: name;
   color: var(--accent);
+  margin-bottom: -.6rem;
 
   @media (min-width: $lg) {
     @include h1;
