@@ -46,6 +46,7 @@
 .repertoire-card__name {
   grid-area: name;
   color: var(--accent);
+  margin-bottom: -.6rem;
 
   @media (min-width: $lg) {
     align-self: end;
