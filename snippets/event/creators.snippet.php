@@ -21,7 +21,7 @@ foreach ($lines as $line) {
         $output .= '    <dt class="creators__position">' . $currentPosition . '</dt>'.PHP_EOL;
     } else {
         $line = trim($line, '- \n\r\t\v\x00');
-        $output .= '    <dd class="creators__names">' . $line . '</dd>'.PHP_EOL;
+        $output .= '    <dd class="creators__name">' . $line . '</dd>'.PHP_EOL;
     }
 }
 
