@@ -100,7 +100,7 @@
 .creators__card {
   display: grid;
   grid-template-columns: auto auto;
-  gap: 2rem;
+  gap: .25rem 2rem;
   align-items: center;
   
   line-height: var(--line-height-small);
@@ -113,6 +113,7 @@
   @include reset-my;
   font-weight: 700;
   align-self: start;
+  grid-column: 1;
 }
 
 .creators__names {
@@ -120,5 +121,6 @@
   text-align: right;
   justify-self: end;
   max-width: 28rem;
+  grid-column: 2;
 }
 

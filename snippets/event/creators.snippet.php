@@ -1,30 +1,34 @@
 <?php
-$output = '';
+$creators = $modx->getOption('creators', $scriptProperties, '');
+$creators = trim($creators);
+$lines = explode("\n", $creators);
 
-if (!empty($scriptProperties['strings'])) {
-    $strings = $scriptProperties['strings'];
-    $strings = trim($strings);
-    $strings = explode("\n", $strings);
-    $strings = array_map('trim', $strings);
-    $strings = array_filter($strings);
-    $count = count($strings);
+$output = '<dl class="creators">'.PHP_EOL;
+$currentPosition = '';
 
-    if ($count % 2 === 0) {
-        $output .= '<dl class="creators">';
-
-        for ($i = 0; $i < $count; $i += 2) {
-            $position = $strings[$i];
-            $names = $strings[$i + 1];
-
-            $output .= '
-            <div class="creators__card">
-              <dt class="creators__position">' . $position . '</dt>
-              <dd class="creators__names">' . $names . '</dd>
-            </div>';
+foreach ($lines as $line) {
+    $line = trim($line);
+    if (empty($line)) {
+        continue;
+    }
+    
+    if (str_starts_with($line, '-') === false) {
+        if (!empty($currentPosition)) {
+            $output .= '  </div>'.PHP_EOL;
         }
-
-        $output .= '</dl>';
+        $currentPosition = $line;
+        $output .= '  <div class="creators__card">'.PHP_EOL;
+        $output .= '    <dt class="creators__position">' . $currentPosition . '</dt>'.PHP_EOL;
+    } else {
+        $line = trim($line, '- \n\r\t\v\x00');
+        $output .= '    <dd class="creators__names">' . $line . '</dd>'.PHP_EOL;
     }
 }
+
+if (!empty($currentPosition)) {
+    $output .= '  </div>'.PHP_EOL;
+}
+
+$output .= '</dl>'.PHP_EOL;
 
 return $output;
