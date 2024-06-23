@@ -1,10 +1,15 @@
 <?php
-$output = '<div class="gallery drag-to-scroll">';
+
+$name = $modx->runSnippet('sql-query', array(
+  'query' => 'SELECT type, name FROM repertoire WHERE alias = "'.$alias.'";'
+));
+$name = $name[0]["type"].' '.$name[0]["name"];
+
+$output = '<div class="gallery drag-to-scroll">'.PHP_EOL;
 
   for ($i = 1; ; $i++) {
     if (file_exists('assets/media/repertoire/'.$alias.'/'.$i.'.jpg')) {
-      // TODO: Добавить название спектакля в alt
-      $output .= '<img class="gallery__photo" src="media/repertoire/'.$alias.'/'.$i.'.jpg" alt="Спектакль" loading="lazy">';
+      $output .= '<img class="gallery__photo" src="media/repertoire/'.$alias.'/'.$i.'.jpg" alt="'.$name.'" loading="lazy">'.PHP_EOL;
     }
     else {
       // Если файл не существует, то заканчиваем цикл.
@@ -14,6 +19,6 @@ $output = '<div class="gallery drag-to-scroll">';
     }
   }
 
-  $output .= '</div>';
+  $output .= '</div>'.PHP_EOL;
 
   return $output;
