@@ -11,6 +11,7 @@ $events = $modx->runSnippet('sql-query', array(
   $russianDayOfWeek = array('','пн','вт','ср','чт','пт', 'сб','вс');
 
   foreach ($events as $event) {
+    $event["date-raw"] = $event["date"];
     $date = strtotime($event["date"]);
     $event["date"] = date("d ", $date).$russianMonths[date('n', $date)].', '.$russianDayOfWeek[date('N', $date)];
     $event["time"] = date("H:i", $date);

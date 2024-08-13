@@ -1,5 +1,7 @@
 <article class="ticket-card">
-  <h4 class="ticket-card__date h3">[[+date]]<br>[[+time]]</h4>
-  <p class="ticket-card__address paragraph">[[+address]]</p>
+  <h4 class="ticket-card__date h3">
+    <time datetime="[[+date-raw]]">[[+date]]<br>[[+time]]</time>
+  </h4>
+  <address class="ticket-card__address paragraph">[[+address]]</address>
   [[+button-workaround]]
 </article>
