@@ -49,12 +49,12 @@
       
       // Если ссылки на виджет нет, то и в HTML ссылку не делаем
       if (!$widgets[$i]) {
-        $upcoming["tags-workaround"] .= '<time class="tag" datetime="'.$dateRaw.'">'.$dates[$i].'</time>';
+        $upcoming["tags-workaround"] .= '<li><time class="tag" datetime="'.$dateRaw.'">'.$dates[$i].'</time></li>';
       }
       else { 
         $upcoming["tags-workaround"] .=
-        '<a class="tag" href="'.$widgets[$i].'" target="_blank">'.
-          '<time datetime="'.$dateRaw.'">'.$dates[$i].'</time></a>';
+        '<li><a class="tag" href="'.$widgets[$i].'" target="_blank">'.
+          '<time datetime="'.$dateRaw.'">'.$dates[$i].'</time></a></li>';
       }
     }
     $output .= $modx->getChunk('upcoming-card', $upcoming);
