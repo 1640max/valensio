@@ -1,6 +1,6 @@
 <article class="upcoming-card">
   <img class="upcoming-card__cover" src="[[+cover]]" alt="[[+name]]" onclick="location.href='[[+link]]'" loading="lazy">
-  <div class="upcoming-card__info">
+  <header class="upcoming-card__info">
     <h3 class="upcoming-card__name">
       <a href="[[+link]]" style="text-decoration: none">[[+name]]&nbsp;<span class="emoji">[[+emoji]]</span></a>
     </h3>
@@ -11,8 +11,7 @@
       </div>
       <div class="tag">[[+age]]+</div>
     </div>
-  </div>
+  </header>
   <!-- TODO: сделать, чтобы зависело от поля type -->
-  <!-- TODO: переименовать везде в #tickets -->
   <a class="upcoming-card__button button" href="[[+link]]#tickets">[[+action]]</a>
 </article>

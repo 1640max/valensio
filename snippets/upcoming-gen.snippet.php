@@ -1,5 +1,5 @@
 <?php
-/* Запрос upcomingCards возвращает сжатую табличку с предстоящими событиями.
+/*   Запрос upcomingCards возвращает сжатую табличку с предстоящими событиями.
      alias не повторяется. Даты и ссылки на виджеты объединены в одну ячейку и разделены через ";".
      При этом прошедшие события удалены, а предстоящие отсортированы по дате.
      Ну и мы этот запрос джойним с табличкой repertoire */
@@ -37,6 +37,9 @@
 
     for ($i = 0; $i < $upcoming['count']; $i++) {
 
+      // Сохраняем dateRaw для тега time
+      $dateRaw = $dates[$i];
+
       // Форматируем даты
       $formattedDate = strtotime($dates[$i]);
       $dates[$i] = date("d ", $formattedDate).$russianMonths[date('n', $formattedDate)].date(" H:i", $formattedDate);
@@ -46,15 +49,12 @@
       
       // Если ссылки на виджет нет, то и в HTML ссылку не делаем
       if (!$widgets[$i]) {
-        $upcoming["tags-workaround"] .= '<div class="tag">'.$dates[$i].'</div>';
+        $upcoming["tags-workaround"] .= '<time class="tag" datetime="'.$dateRaw.'">'.$dates[$i].'</time>';
       }
       else { 
         $upcoming["tags-workaround"] .=
-        '<a class="tag" href="'.
-        $widgets[$i].
-        '" target="_blank">'.
-        $dates[$i].
-        '</a>';
+        '<a class="tag" href="'.$widgets[$i].'" target="_blank">'.
+          '<time datetime="'.$dateRaw.'">'.$dates[$i].'</time></a>';
       }
     }
     $output .= $modx->getChunk('upcoming-card', $upcoming);
